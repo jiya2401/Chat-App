@@ -1,5 +1,5 @@
+🗨️ WhatsUp - Simple Chat Application!
 
-🗨️ #WhatsUp - Simple Chat Application
 A basic chat management web app built with Node.js, Express, EJS, Bootstrap, and MongoDB.
 
 Users can:
