@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whatsup</title>
+    <link rel="stylesheet" href="style.css" />
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h2 class="mb-4">All chats!</h2>
+    <form method="GET" action="/chats/new">
+       <button class="btn btn-success mb-3">New Chat</button>
+    </form>
+    <br />
+    <% for(let chat of chats) {%>
+    <div class="chat">
+        <p>from: <%= chat.from %></p>
+        <div class="msg">
+            <p><%= chat.msg %></p>
+            <form method="GET" action="/chats/<%= chat._id %>/edit">
+                <button class="btn btn-warning btn-sm">Edit</button>
+            </form>
+            <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+                 <button class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </div>
+        <p class="mb-0 text-muted">Received by: <i><%= chat.to %></i></p>
+            <small class="text-secondary">
+                Sent at: <%= new Date(chat.created_at).toTimeString().split(" ")[0] %> | 
+                <%= new Date(chat.created_at).toDateString() %>
+            </small>            
+    </div>
+    <br /><br />
+   <% } %>
+</body>
+</html>
